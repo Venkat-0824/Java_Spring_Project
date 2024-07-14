@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SubmissionRepoClass.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">rest-demo</a> &gt; <a href="index.source.html" class="el_package">com.vn.restdemo.repo</a> &gt; <span class="el_source">SubmissionRepoClass.java</span></div><h1>SubmissionRepoClass.java</h1><pre class="source lang-java linenums">package com.vn.restdemo.repo;
+
+import com.vn.restdemo.model.SubmissionDTO;
+
+import java.util.*;
+
+import lombok.Data;
+import org.springframework.stereotype.Repository;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+<span class="pc bnc" id="L13" title="All 14 branches missed.">@Data</span>
+@Repository
+public class SubmissionRepoClass implements SubmissionRepository {
+
+<span class="pc" id="L17">    private  Map&lt;String, SubmissionDTO&gt; submissions = new HashMap&lt;&gt;();</span>
+
+    @Override
+    public SubmissionDTO getSubmission(String id) {
+
+<span class="fc" id="L22">        return submissions.get(id);</span>
+    }
+
+    @Override
+    public List&lt;SubmissionDTO&gt; getAll() {
+<span class="nc" id="L27">        return new ArrayList&lt;&gt;(submissions.values());</span>
+    }
+
+    @Override
+    public SubmissionDTO addSubmission(SubmissionDTO submission) {
+<span class="fc" id="L32">        String id = UUID.randomUUID().toString();</span>
+<span class="fc" id="L33">        submission.setId(id);</span>
+
+<span class="fc" id="L35">        submissions.put(id, submission);</span>
+<span class="fc" id="L36">        return submission;</span>
+    }
+
+    @Override
+    public SubmissionDTO updateSubmission(SubmissionDTO submission) {
+<span class="fc" id="L41">        String id = submission.getId();</span>
+<span class="pc bpc" id="L42" title="1 of 2 branches missed.">        if (submissions.containsKey(id)) {</span>
+<span class="fc" id="L43">            submissions.put(id, submission);</span>
+<span class="fc" id="L44">            return submission;</span>
+        }
+<span class="nc" id="L46">        return null;</span>
+    }
+
+    @Override
+    public boolean deleteSubmission(String id) {
+
+
+<span class="fc" id="L53">         submissions.entrySet().stream().filter(es -&gt; {</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">            if(es.getValue().getConsultantName().equals(id)){</span>
+<span class="fc" id="L55">                return true;</span>
+            }
+<span class="nc" id="L57">            return false;</span>
+<span class="fc" id="L58">        }).map(k -&gt; k.getKey()).toList().forEach(submissions::remove);</span>
+
+
+
+<span class="fc" id="L62">        return true;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

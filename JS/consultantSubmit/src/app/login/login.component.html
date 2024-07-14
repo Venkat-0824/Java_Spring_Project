@@ -1,0 +1,18 @@
+
+<div class="mx-auto p-4  " style="width: 500px;">
+  <h4 class="text-center ">Login</h4>
+  <form (submit)="login()">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email </label>
+      <input  class="form-control" type="email" id="email" [(ngModel)]="email" name="email" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input class="form-control" type="password" id="password" [(ngModel)]="password" name="password">
+    </div>
+    
+    <button type="submit" class="btn btn-primary ">Submit</button>
+  </form>
+
+</div>
+

@@ -1,0 +1,15 @@
+<nav class="navbar bg-secondary" data-bs-theme="dark">
+  <div class="container">
+    <h3 class="align-self-start" style="color: rgb(248, 244, 244);">Submission Form</h3>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button class="btn btn-secondary" type="button"  *ngIf="authService.isLoggedIn" (click)='profile()'><img src="assets/person-fill.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top" style="color: rgb(248, 244, 244);"></button>
+      <button class="btn btn-secondary" type="button" *ngIf="!authService.isLoggedIn"   (click)="login()"><div style="color: rgb(248, 244, 244);">Login</div></button>
+      <button class="btn btn-secondary" type="button" *ngIf="authService.isLoggedIn"   (click)="logout()"><div style="color: rgb(247, 246, 246);">Logout </div></button>
+      <button class="btn btn-secondary" type="button" *ngIf="!authService.isLoggedIn"   (click)="signUp()"><div style="color: rgb(252, 252, 252);">Sign up</div></button>
+    </div>
+  </div>
+</nav>
+
+
+ 
+

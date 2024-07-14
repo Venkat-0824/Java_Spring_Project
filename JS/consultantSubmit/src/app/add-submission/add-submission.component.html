@@ -1,0 +1,50 @@
+<div class="modal-content">
+  <form [formGroup]="submissionForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h5 class="modal-title">Submission Form</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+
+    <div class="modal-body">
+      <div class="mb-3">
+        <label for="date" class="form-label">Date</label>
+        <input type="date" id="date" class="form-control" formControlName="date" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="consultantName" class="form-label">Consultant Name</label>
+        <input type="text" id="consultantName" class="form-control" formControlName="consultantName" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="technology" class="form-label">Technology</label>
+        <input type="text" id="technology" class="form-control" formControlName="technology" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="lead" class="form-label">Leads</label>
+        <input type="text" id="leads" class="form-control" formControlName="leads" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="salesPerson" class="form-label">Sales Person</label>
+        <input type="text" id="salesPerson" class="form-control" formControlName="salesPerson" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="vendorName" class="form-label">Vendor Name</label>
+        <input type="text" id="vendorName" class="form-control" formControlName="vendorName" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="rate" class="form-label">Rate</label>
+        <input type="number" id="rate" class="form-control" formControlName="rate" required>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>

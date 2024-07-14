@@ -1,0 +1,9 @@
+com\vnapi\LoginVerify\repo\LoginRepository.class
+com\vnapi\LoginVerify\repo\SubmissionRepository.class
+com\vnapi\LoginVerify\model\Submission.class
+com\vnapi\LoginVerify\LoginVerifyApplication.class
+com\vnapi\LoginVerify\CorsConfig.class
+com\vnapi\LoginVerify\service\SubmissionService.class
+com\vnapi\LoginVerify\controller\LoginController.class
+com\vnapi\LoginVerify\model\User.class
+com\vnapi\LoginVerify\service\LoginService.class

@@ -1,0 +1,97 @@
+<div class="container px-4 text-center">
+  <div class="row gx-5">
+    <div class="col">
+      <div class="p-3">
+        <div class="dropdown-center">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{ selectedLead || 'Lead' }}
+          </button>
+          <ul class="dropdown-menu" >
+            <li><a class="dropdown-item" (click)="selectLead('All')">All</a></li>
+            <li><a class="dropdown-item" *ngFor="let l of leads"  (click)="selectLead(l)">{{l}}</a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3">
+        <div class="dropdown-center">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            {{selectedTechnology || 'Technology'}}
+          </button>
+          <ul class="dropdown-menu" >
+            <li><a class="dropdown-item" (click)="selectTechnology('All')">All</a></li>
+            <li><a class="dropdown-item" *ngFor="let t of technologies"  (click)="selectTechnology(t)">{{t}}</a></li>
+       
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#submissionModal">
+          Add new Submission
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="submissionModal" tabindex="-1" aria-labelledby="submissionModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <app-add-submission></app-add-submission>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<table class="table  table-bordered  table-hover table-striped-columns">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Consultant Name</th>
+      <th>Technology</th>
+      <th>Lead</th>
+      <th>Sales Person</th>
+      <th>Vendor Name</th>
+      <th>Rate</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <ng-container *ngFor="let submission of submissionDetails.info">
+      <tr *ngIf="(selectedLead === submission.leads || selectedLead === 'All') && (selectedTechnology === submission.technology || selectedTechnology === 'All')">
+        <td>{{ submission.date }}</td>
+        <td>{{ submission.consultantName }}</td>
+        <td>{{ submission.technology }}</td>
+        <td>{{ submission.leads }}</td>
+        <td>{{ submission.salesPerson }}</td>
+        <td>{{ submission.vendorName }}</td>
+        <td>{{ submission.rate }}</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button btn-sm" class="btn btn-danger" (click)="onDelete(submission.id)">Delete</button>
+
+            
+            <button type="button btn-sm" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#submissionEditModal" (click)="onEdit(submission)">Edit</button>
+
+            
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    <div class="modal fade" id="submissionEditModal" tabindex="-1" aria-labelledby="submissionEditModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <app-edit [submissioninput]="currentSubmission"></app-edit>
+        </div>
+      </div>
+    </div>
+  </tbody>
+</table>

@@ -1,0 +1,26 @@
+
+<header style="background-color: blue; color: white;">
+  
+  <nav style="padding: 20px ;">
+    <ul style="display: flex; ">
+
+      <h1 *ngIf="authService.isLoggedIn"> Hello vn</h1>
+     
+      <li><button *ngIf="!authService.isLoggedIn" (click)="signup()">Signup </button></li>
+      <li><button *ngIf="!authService.isLoggedIn"   (click)="login()">login</button> </li>
+      <li><button *ngIf="authService.isLoggedIn" (click)="logout()">Logout</button></li>
+      <li><button *ngIf="authService.isLoggedIn" (click)="profile()">Profile </button></li>
+      
+     
+      
+
+
+      
+     
+    </ul>
+  </nav>
+</header>
+
+
+
+ 

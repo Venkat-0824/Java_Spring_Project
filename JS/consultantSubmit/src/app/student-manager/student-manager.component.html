@@ -1,0 +1,76 @@
+<div class="container px-4 text-center">
+  <div class="row gx-5">
+    <div class="col">
+      <div class="p-3">
+        <h3>All Available Students</h3>
+
+<table class="table  table-bordered  table-hover table-striped-columns">
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>email</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+    <ng-container *ngFor="let u of usd.userInfo">
+      <tr *ngIf="u.leadId === 0 && u.role!=='lead' ">
+        <td>{{ u.firstName }}</td>
+        <td>{{ u.email }}</td>
+        
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button btn-sm" class="btn btn-success" (click)="addTo(u)">Add</button>
+
+            
+            
+            
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    
+  </tbody>
+</table>
+      </div>
+    </div>
+    <div class="col">
+      <div class="p-3">
+
+        <h3>Students Assigned to You</h3>
+
+        <table class="table  table-bordered  table-hover table-striped-columns">
+          <thead>
+            <tr >
+              <th>name</th>
+              <th>email</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody class="table-group-divider">
+            <ng-container *ngFor="let u of usd.userInfo">
+              <tr *ngIf="u.leadId === usd.users.id  && u.role!=='lead' ">
+                <td>{{ u.firstName }}</td>
+                <td>{{ u.email }}</td>
+                
+                <td>
+                  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button btn-sm" class="btn btn-danger" (click)="removeFrom(u)">Remove</button>
+        
+                    
+                    
+                    
+                  </div>
+                </td>
+              </tr>
+            </ng-container>
+            
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
